@@ -1,0 +1,124 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hi
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - 1
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: report_issue
+  examples: |
+    - I have a technical problem
+    - Something is wrong with my computer
+    - I need technical support
+    - My system is not working
+    - I'm having issues with [printer](device)
+    - [Network](issue_type) is down
+    - Can't access [email](system)
+- intent: password_reset
+  examples: |
+    - I need to reset my password
+    - Forgot my password
+    - Can't login to my account
+    - How do I change my password
+    - Password reset help
+    - i need to reset my password
+- intent: software_installation
+  examples: |
+    - How do I install [Microsoft Office](software)
+    - Need help installing [Chrome](software)
+    - Can't install [Zoom](software)
+    - Software installation support
+    - Download and install [Teams](software)
+- intent: network_connectivity
+  examples: |
+    - No internet connection
+    - WiFi is not working
+    - Can't connect to network
+    - Network is slow
+    - VPN connection issues
+- intent: thank
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+    - great thanks
+    - appreciate it

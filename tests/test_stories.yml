@@ -1,0 +1,219 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+
+- story: happy path 2
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      not really
+    intent: deny
+  - action: utter_goodbye
+
+- story: sad path 3
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      very terrible
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: password reset flow
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: password_reset
+  - action: utter_password_reset_steps
+  - intent: thank
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: software installation help
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: software_installation
+    entities:
+    - software: "Microsoft Office"
+  - action: utter_software_installation_guide
+  - action: utter_ask_if_resolved
+  - intent: thank
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: network issue resolution
+  steps:
+  - intent: network_connectivity
+  - action: utter_network_troubleshooting
+  - action: utter_ask_if_resolved
+  - intent: thank
+  - action: utter_welcome
+
+- story: interrupted network troubleshooting
+  steps:
+  - intent: network_connectivity
+  - action: utter_network_troubleshooting
+  - intent: password_reset
+  - action: utter_password_reset_steps
+  - intent: thank
+  - action: utter_welcome
+
+- story: report issue with device
+  steps:
+  - intent: report_issue
+    entities:
+  - device: "printer"
+  - action: action_check_device_status
+  - action: utter_ask_if_resolved
+  - intent: thank
+  - action: utter_welcome
+
+# - story: multiple issues in one session
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: network_connectivity
+#   - action: utter_network_troubleshooting
+#   - action: utter_ask_if_resolved
+#   - intent: software_installation
+#     entities:
+#   - software: "Zoom"
+#   - action: utter_software_installation_guide
+#   - action: utter_ask_if_resolved
+#   - intent: thank
+#   - action: utter_welcome
+
+# - story: complete identification and password reset
+#   steps:
+#   - intent: greet
+#   - action: user_identification_form
+#   - intent: provide_info
+#     entities:
+#     - name: "John Smith"
+#     - employee_id: "EMP123"
+#   - action: action_verify_user
+#   - action: utter_greet
+#   - intent: password_reset
+#   - action: action_handle_password_reset
+#   - intent: thank
+#   - action: utter_welcome
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - story: user provides incomplete information
+#   steps:
+#   - intent: greet
+#   - action: user_identification_form
+#   - intent: provide_info
+#     entities:
+#     - name: "Sarah Johnson"
+#   - action: user_identification_form
+#   - intent: provide_info
+#     entities:
+#     - employee_id: "EMP456"
+#   - action: action_verify_user
+#   - action: utter_greet
+
+# - story: failed verification attempt
+#   steps:
+#   - intent: greet
+#   - action: user_identification_form
+#   - intent: provide_info
+#     entities:
+#     - name: "David Wilson"
+#     - employee_id: "INVALID123"
+#   - action: action_verify_user
+#   - action: utter_verification_failed
+#   - action: user_identification_form
+
+# - story: complete identification and software installation
+#   steps:
+#   - intent: greet
+#   - action: user_identification_form
+#   - intent: provide_info
+#     entities:
+#     - name: "Emma Davis"
+#     - employee_id: "EMP789"
+#   - action: action_verify_user
+#   - action: utter_greet
+#   - intent: software_installation
+#     entities:
+#     - software: "Zoom"
+#   - action: action_check_software_compatibility
+#   - action: utter_ask_if_resolved
+#   - intent: thank
+#   - action: utter_welcome
